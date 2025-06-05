@@ -201,7 +201,7 @@ export default function Home() {
           </button>
 
           <div className="mt-8">
-            <ul className="space-y-2 text-xs text-zinc-500">
+            <ul className="space-y-2 text-xs text-zinc-400">
               <li>
                 <p>
                   <span className="font-semibold text-zinc-400">Reads:</span> The number of reads determines how often
