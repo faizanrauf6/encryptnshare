@@ -145,10 +145,12 @@ export default function Unseal() {
 
           <button
             type="submit"
-            disabled={loading}
-            className={`mt-8 w-full h-12 inline-flex justify-center items-center  transition-all  rounded px-4 py-1.5 md:py-2 text-base font-semibold leading-7 text-zinc-800   bg-zinc-200 ring-1  duration-150  hover:text-black hover:drop-shadow-cta   hover:bg-white ${
-              loading ? "animate-pulse" : ""
-            }`}
+            disabled={loading || compositeKey.length <= 0}
+            className={`mt-6 w-full h-12 inline-flex justify-center items-center  transition-all  rounded px-4 py-1.5 md:py-2 text-base font-semibold leading-7    bg-zinc-200 ring-1 ring-transparent duration-150   ${
+              compositeKey.length <= 0
+                ? "text-zinc-400 cursor-not-allowed"
+                : "text-zinc-900 hover:text-zinc-100 hover:ring-zinc-600/80  hover:bg-zinc-900/20"
+            } ${loading ? "animate-pulse" : ""}`}
           >
             <span>{loading ? <Cog6ToothIcon className="w-5 h-5 animate-spin" /> : "Unseal"}</span>
           </button>
