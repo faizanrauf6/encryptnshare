@@ -4,7 +4,7 @@
 </div>
 
 <div align="center">
-  <a href="https://envshare.dev">envshare.dev</a>
+  <a href="https://encryptnshare.vercel.app/">envshare.dev</a>
 </div>
 <br/>
 
