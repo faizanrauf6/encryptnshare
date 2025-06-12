@@ -2,18 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 import { z } from "zod";
 
-const responseValidation = z.union([
-  z.object({
-    data: z.object({
-      remainingReads: z.number().int().optional(),
-      secret: z.string(),
-    }),
-  }),
-  z.object({
-    error: z.string(),
-  }),
-]);
-
 const redis = Redis.fromEnv();
 export default async function handler(req: NextRequest): Promise<NextResponse> {
   try {
@@ -24,7 +12,6 @@ export default async function handler(req: NextRequest): Promise<NextResponse> {
     if (!id) {
       return NextResponse.json({ error: "Missing `id` parameter" }, { status: 400 });
     }
-
     const redisKey = ["envshare", id].join(":");
 
     const [data, _] = await Promise.all([
