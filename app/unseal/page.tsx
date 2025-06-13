@@ -75,25 +75,22 @@ export default function Unseal() {
             </div>
           ) : null}
           <pre className="px-4 py-3 mt-8 font-mono text-left bg-transparent border rounded border-zinc-600 focus:border-zinc-100/80 focus:ring-0 sm:text-sm text-zinc-100">
-            <div className="flex items-start px-1 text-sm">
+            <div className="flex items-start px-1 text-sm w-full">
               <div aria-hidden="true" className="pr-4 font-mono border-r select-none border-zinc-300/5 text-zinc-700">
-                {Array.from({
-                  length: text.split("\n").length,
-                }).map((_, index) => (
+                {Array.from({ length: text.split("\n").length }).map((_, index) => (
                   <Fragment key={index}>
                     {(index + 1).toString().padStart(2, "0")}
                     <br />
                   </Fragment>
                 ))}
               </div>
-              <div>
-                <pre className="flex overflow-x-auto">
-                  <code className="px-4 text-left">{text}</code>
+              <div className="flex-1 px-4 overflow-hidden">
+                <pre className="whitespace-pre-wrap break-words text-left">
+                  <code>{text}</code>
                 </pre>
               </div>
             </div>
           </pre>
-
           <div className="flex items-center justify-end gap-4 mt-4">
             <Link
               href="/share"
