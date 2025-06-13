@@ -177,7 +177,7 @@ export default function Home() {
                 <select
                   id="ttlMultiplier"
                   name="ttlMultiplier"
-                  className="h-full py-0 pl-2 bg-transparent border-0 border-transparent rounded pr-7 text-zinc-500 focus:ring-0 sm:text-sm"
+                  className="h-full py-0 pl-2 bg-transparent border-0 border-transparent rounded pr-7 text-zinc-100 focus:ring-0 sm:text-sm"
                   onChange={(e) => setTtlMultiplier(parseInt(e.target.value))}
                   defaultValue={60 * 60 * 24}
                 >
