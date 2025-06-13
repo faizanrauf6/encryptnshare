@@ -54,11 +54,11 @@ export default function Home() {
   };
 
   return (
-    <div className="container px-8 mx-auto mt-16 lg:mt-32 ">
+    <div className="container px-8 mx-auto mt-16 lg:mt-24 ">
       {error ? <ErrorMessage message={error} /> : null}
 
       {link ? (
-        <div className="flex flex-col items-center justify-center w-full h-full mt-8 md:mt-16 xl:mt-32">
+        <div className="flex flex-col items-center justify-center w-full h-full mt-8 md:mt-16 xl:mt-24">
           <Title>Share this link with others</Title>
           <div className="relative flex items-stretch flex-grow mt-16 focus-within:z-10">
             <pre className="px-4 py-3 font-mono text-center bg-transparent border rounded border-zinc-600 focus:border-zinc-100/80 focus:ring-0 sm:text-sm text-zinc-100">
@@ -132,6 +132,11 @@ export default function Home() {
                 type="file"
                 onChange={(e) => {
                   const file = e.target.files![0];
+
+                  if (!file.name.endsWith(".env")) {
+                    setError("Only .env files are allowed.");
+                    return;
+                  }
                   if (file.size > 1024 * 16) {
                     setError("File size must be less than 16kb");
                     return;
@@ -202,6 +207,18 @@ export default function Home() {
 
           <div className="mt-8">
             <ul className="space-y-2 text-xs text-zinc-400">
+              <li>
+                <p>
+                  <span className="font-semibold text-zinc-400">File Upload:</span> Only <code>.env</code> files are allowed. These files are usually hidden by default.
+                  <br />
+                  <span className="text-zinc-400">To show hidden files:</span>
+                  <ul className="list-disc list-inside text-zinc-400 mt-1 space-y-1">
+                    <li><span className="font-medium">macOS:</span> Press <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>.</kbd> in Finder</li>
+                    <li><span className="font-medium">Windows:</span> In File Explorer, go to the <em>View</em> tab and check <strong>Hidden items</strong></li>
+                    <li><span className="font-medium">Ubuntu:</span> Press <kbd>Ctrl</kbd> + <kbd>H</kbd> in the file manager</li>
+                  </ul>
+                </p>
+              </li>
               <li>
                 <p>
                   <span className="font-semibold text-zinc-400">Reads:</span> The number of reads determines how often
